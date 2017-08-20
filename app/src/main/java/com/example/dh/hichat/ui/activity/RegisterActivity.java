@@ -89,7 +89,7 @@ public class RegisterActivity extends BaseActivity {
 
         switch (view.getId()) {
             case R.id.bt_register:
-
+                register();
                 break;
             case R.id.ib_back:
                 if (rlloading != null && rlloading.getVisibility() == View.VISIBLE) {
