@@ -6,33 +6,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by DH on 2017/8/10.
+ * Created by Apple on 2016/12/1.
+ * Fragment的工厂类
  */
 
 public final class FragmentFactory {
     private FragmentFactory() {
     }
+    private static Map<Class,Fragment> map = new HashMap<>();
 
-    private static Map<Class, Fragment> map = new HashMap<>();
 
     //获取实例
-    public static synchronized Fragment createFragment(Class<? extends Fragment> clazz) {
-        //从集合中获取
+    public static synchronized Fragment getInstance(Class<? extends Fragment> clazz){
+        //从集合里面获取
         Fragment fragment = map.get(clazz);
-        if (fragment == null) {
-            try {
+        if(fragment == null){
+            try{
                 fragment = clazz.newInstance();
                 //保存进集合
-                map.put(clazz, fragment);
-            } catch (Exception e) {
-                e.printStackTrace();
+                map.put(clazz,fragment);
+            }catch (Exception e){
+
             }
         }
-        return fragment;
+        return  fragment;
     }
 
     //清空
-    public static void clear() {
+    public static void clear(){
         map.clear();
     }
+
 }

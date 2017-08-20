@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".ui.activity.EnterNickNameActivity"/>
         <activity android:name=".ui.activity.LoginActivity"/>
+        <activity android:name=".ui.activity.PersonalInfoActivity"/>
+        <activity android:name=".ui.activity.RegisterActivity"/>
     </application>
 
 </manifest>

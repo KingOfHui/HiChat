@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         //把NearByFragment显示在FrameLayout里面
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.contaier, FragmentFactory.createFragment(fragments[0]), "0");//把附近的Fragment添加到container
+        ft.add(R.id.contaier, FragmentFactory.getInstance(fragments[0]), "0");//把附近的Fragment添加到container
         ft.commit();
     }
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction ft = fm.beginTransaction();
             if (fragment==null) {
                 //添加
-                ft.add(R.id.contaier, FragmentFactory.createFragment(fragments[position]), position + "");
+                ft.add(R.id.contaier, FragmentFactory.getInstance(fragments[position]), position + "");
 
             }else {
                 //显示

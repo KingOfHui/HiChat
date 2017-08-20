@@ -95,12 +95,6 @@ public abstract class BaseFragment extends Fragment {
     //设置空布局的图片和文字
     public abstract void setEmptyView(ImageView ivEmpty, TextView tvInfo);
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
     @OnClick({R.id.ib_back, R.id.bt_register, R.id.bt_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -115,5 +109,11 @@ public abstract class BaseFragment extends Fragment {
                 startActivity(intent1);
                 break;
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }
