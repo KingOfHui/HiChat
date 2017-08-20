@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_tab_bkg">
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnFaceBeauty"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/face_beauty"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnCameraChange"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/camera_change"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnTouchFoucs"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/automatic"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/btnFlash"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/flash_on"
+            android:visibility="visible"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnHWEncode"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/quick"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnBitrate"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/fix_bitrate"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!--固定：码率-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layoutBitrate"
+        android:layout_marginBottom="0dp"
+        android:background="#FFFFFF"
+        android:visibility="gone"
+        android:clickable="true"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="码率自适应"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"/>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:visibility="visible"
+            android:id="@+id/resolutionRadioGroup"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <RadioButton
+                style="@style/RadiobuttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="720P"
+                android:tag="4"
+                android:id="@+id/radio_btn_fix_720p"
+                android:textColor="@color/resolution_radio_color"
+                android:background="@drawable/resolution_radio" />
+            <RadioButton
+                style="@style/RadiobuttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="540P"
+                android:tag="3"
+                android:id="@+id/radio_btn_fix_540p"
+                android:textColor="@color/resolution_radio_color"
+                android:background="@drawable/resolution_radio" />
+            <RadioButton
+                style="@style/RadiobuttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="360P"
+                android:tag="2"
+                android:id="@+id/radio_btn_fix_360p"
+                android:textColor="@color/resolution_radio_color"
+                android:background="@drawable/resolution_radio" />
+
+            <RadioButton
+                style="@style/RadiobuttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="360+"
+                android:tag="1"
+                android:id="@+id/radio_btn_auto"
+                android:textColor="@color/resolution_radio_color"
+                android:background="@drawable/resolution_radio" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <!--美颜：美颜|美白-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:minHeight="105dp"
+        android:orientation="vertical"
+        android:id="@+id/layoutFaceBeauty"
+        android:layout_marginBottom="0dp"
+        android:background="#FFFFFF"
+        android:visibility="gone"
+        android:clickable="true"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="美颜效果"
+                android:textSize="16sp" />
+            <SeekBar
+                android:id="@+id/beauty_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="18dp"
+                android:maxHeight="4.0dip"
+                android:minHeight="4.0dip"
+                android:visibility="visible"
+                android:max="9"
+                android:indeterminate="false" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="美白效果"
+                android:textSize="16sp" />
+            <SeekBar
+                android:id="@+id/whitening_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="18dp"
+                android:maxHeight="4.0dip"
+                android:minHeight="4.0dip"
+                android:visibility="visible"
+                android:max="9"
+                android:indeterminate="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
