@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.example.dh.hichat.R;
+import com.example.dh.hichat.base.BaseFragment;
 import com.example.dh.hichat.ui.fragment.ContactFragment;
 import com.example.dh.hichat.ui.fragment.ConversationFragment;
 import com.example.dh.hichat.ui.fragment.LiveFragment;
@@ -130,14 +130,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            //把当前的activity移至到后台
+//            //是否为任务栈的
+//            moveTaskToBack(false);
+//            return true;//自己处理后退键的行为
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //把当前的activity移至到后台
-            //是否为任务栈的
-            moveTaskToBack(false);
-            return true;//自己处理后退键的行为
+    public void onBackPressed() {
+        BaseFragment fragment = (BaseFragment) getSupportFragmentManager()
+                .findFragmentByTag("0");
+        if (!fragment.onKeyBackPressed()){//fragment.onKeyBackPressed()返回false代表未消费事件
+            super.onBackPressed();//继续执行原有返回逻辑
         }
-        return super.onKeyDown(keyCode, event);
     }
 }

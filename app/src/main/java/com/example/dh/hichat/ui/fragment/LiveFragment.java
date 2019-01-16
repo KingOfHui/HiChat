@@ -1,6 +1,5 @@
 package com.example.dh.hichat.ui.fragment;
 
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dh.hichat.base.BaseFragment;
@@ -15,8 +14,8 @@ public class LiveFragment extends BaseFragment {
         tvTitle.setText("直播");
     }
 
-    @Override
-    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
-
-    }
+//    @Override
+//    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
+//
+//    }
 }

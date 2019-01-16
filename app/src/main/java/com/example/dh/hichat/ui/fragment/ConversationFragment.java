@@ -1,9 +1,7 @@
 package com.example.dh.hichat.ui.fragment;
 
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
 
 /**
@@ -16,9 +14,9 @@ public class ConversationFragment extends BaseFragment {
         tvTitle.setText("会话");
     }
 
-    @Override
-    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
-        ivEmpty.setImageResource(R.drawable.ic_guest_messag_empty);
-        tvInfo.setText("可以让附近的人收发消息");
-    }
+//    @Override
+//    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
+//        ivEmpty.setImageResource(R.drawable.ic_guest_messag_empty);
+//        tvInfo.setText("可以让附近的人收发消息");
+//    }
 }

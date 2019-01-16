@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
@@ -20,12 +19,9 @@ import android.widget.TextView;
 
 import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseActivity;
-import com.fourmob.datetimepicker.date.DatePickerDialog;
-import com.lljjcoder.citypickerview.widget.CityPicker;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.Calendar;
 
 /**
  * Created by DH on 2017/8/20.
@@ -42,7 +38,7 @@ public class PersonalInfoActivity extends BaseActivity {
     private android.widget.Button btnext;
     private android.widget.LinearLayout activitypersonalinfo;
     private String mNickName;
-    private DatePickerDialog mDatePickerDialog;
+//    private DatePickerDialog mDatePickerDialog;
 
     @Override
     public View addContent(LayoutInflater mInflater, FrameLayout frameLayout) {
@@ -149,67 +145,67 @@ public class PersonalInfoActivity extends BaseActivity {
     }
 
     //弹出城市选择对话框
-    private CityPicker cityPicker;
+//    private CityPicker cityPicker;
 
     private void showSelectHomeDialog() {
-        if (cityPicker == null) {
-            cityPicker=new CityPicker.Builder(this)
-                    .title("选择家乡")
-                    .textSize(20)
-                    .titleBackgroundColor("#b9b7b8")
-                    .onlyShowProvinceAndCity(true)
-                    .cancelTextColor("#FF4081")
-                    .confirTextColor("#FF4081")
-                    .province("北京市")
-                    .city("东城区")
-                    .district("无")
-                    .textColor(Color.parseColor("#000000"))
-                    .provinceCyclic(true)
-                    .cityCyclic(false)
-                    .districtCyclic(false)
-                    .visibleItemsCount(7)
-                    .itemPadding(10)
-                    .build();
-            //确定选择监听
-            cityPicker.setOnCityItemClickListener(new MyOnCityItemClickListener());
-        }
-        cityPicker.show();
+//        if (cityPicker == null) {
+//            cityPicker=new CityPicker.Builder(this)
+//                    .title("选择家乡")
+//                    .textSize(20)
+//                    .titleBackgroundColor("#b9b7b8")
+//                    .onlyShowProvinceAndCity(true)
+//                    .cancelTextColor("#FF4081")
+//                    .confirTextColor("#FF4081")
+//                    .province("北京市")
+//                    .city("东城区")
+//                    .district("无")
+//                    .textColor(Color.parseColor("#000000"))
+//                    .provinceCyclic(true)
+//                    .cityCyclic(false)
+//                    .districtCyclic(false)
+//                    .visibleItemsCount(7)
+//                    .itemPadding(10)
+//                    .build();
+//            //确定选择监听
+//            cityPicker.setOnCityItemClickListener(new MyOnCityItemClickListener());
+//        }
+//        cityPicker.show();
     }
 
-    private class MyOnCityItemClickListener implements CityPicker.OnCityItemClickListener {
-
-        @Override
-        public void onSelected(String... citySelected) {
-            tvhome.setText(citySelected[0]+"-"+citySelected[1]);
-            changeNextButtonState();
-        }
-    }
+//    private class MyOnCityItemClickListener implements CityPicker.OnCityItemClickListener {
+//
+//        @Override
+//        public void onSelected(String... citySelected) {
+//            tvhome.setText(citySelected[0]+"-"+citySelected[1]);
+//            changeNextButtonState();
+//        }
+//    }
     //弹出选择日期的对话框
     private void showSelectDateDialog() {
         //日历对象
-        Calendar calendar=Calendar.getInstance();
-        //日期选择对话框
-
-        if(mDatePickerDialog==null) {
-            mDatePickerDialog = DatePickerDialog.newInstance(new MyOnDateSetListener(),//日期选择监听
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH),
-                    false);//是否振动
-            mDatePickerDialog.setYearRange(1985, 2028);
-        }
-        mDatePickerDialog.show(getSupportFragmentManager(),"DATEPICKER_TAG");
+//        Calendar calendar=Calendar.getInstance();
+//        //日期选择对话框
+//
+//        if(mDatePickerDialog==null) {
+//            mDatePickerDialog = DatePickerDialog.newInstance(new MyOnDateSetListener(),//日期选择监听
+//                    calendar.get(Calendar.YEAR),
+//                    calendar.get(Calendar.MONTH),
+//                    calendar.get(Calendar.DAY_OF_MONTH),
+//                    false);//是否振动
+//            mDatePickerDialog.setYearRange(1985, 2028);
+//        }
+//        mDatePickerDialog.show(getSupportFragmentManager(),"DATEPICKER_TAG");
     }
 
-    private class MyOnDateSetListener implements DatePickerDialog.OnDateSetListener{
-
-        @Override
-        public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
-            //把选择的日期显示在TextView里
-            tvbirthday.setText(year+"-"+month+"-"+day);
-            changeNextButtonState();
-        }
-    }
+//    private class MyOnDateSetListener implements DatePickerDialog.OnDateSetListener{
+//
+//        @Override
+//        public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+//            //把选择的日期显示在TextView里
+//            tvbirthday.setText(year+"-"+month+"-"+day);
+//            changeNextButtonState();
+//        }
+//    }
     //从系统的相册中获取一张图片
     private void pickPictureFromSystemGallery() {
         Intent intent = new Intent();

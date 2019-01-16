@@ -1,9 +1,7 @@
 package com.example.dh.hichat.ui.fragment;
 
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
 
 /**
@@ -16,9 +14,9 @@ public class ContactFragment extends BaseFragment {
         tvTitle.setText("通讯录");
     }
 
-    @Override
-    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
-        ivEmpty.setImageResource(R.drawable.ic_guest_contact_empty);
-        tvInfo.setText("可以让附近的人互动");
-    }
+//    @Override
+//    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
+//        ivEmpty.setImageResource(R.drawable.ic_guest_contact_empty);
+//        tvInfo.setText("可以让附近的人互动");
+//    }
 }
