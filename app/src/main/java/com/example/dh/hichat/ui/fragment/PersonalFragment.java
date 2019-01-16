@@ -1,7 +1,9 @@
 package com.example.dh.hichat.ui.fragment;
 
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
 
 /**
@@ -11,13 +13,13 @@ import com.example.dh.hichat.base.BaseFragment;
 public class PersonalFragment extends BaseFragment {
     @Override
     public void setDefaultTitle(TextView tvTitle) {
-        tvTitle.setText("个人");
+        tvTitle.setText("关于彩神争霸");
     }
 
-//    @Override
-//    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
-//
-//        ivEmpty.setImageResource(R.drawable.ic_guest_person_empty);
-//        tvInfo.setText("可以让附近的人发现你");
-//    }
+    @Override
+    public void showBodyContent() {
+        super.showBodyContent();
+        View view = View.inflate(getContext(), R.layout.fragment_personal, null);
+        content.addView(view);
+    }
 }

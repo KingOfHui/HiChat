@@ -1,5 +1,6 @@
 package com.example.dh.hichat.ui.fragment;
 
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebResourceResponse;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.dh.hichat.Html5WebView;
 import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
+
 
 /**
  * Created by DH on 2017/8/10.
@@ -29,12 +31,6 @@ public class NearByFragment extends BaseFragment {
         tvTitle.setText("彩神争霸");
     }
 
-//    @Override
-//    public void setEmptyView(ImageView ivEmpty, TextView tvInfo) {
-//
-//    }
-
-
     @Override
     public void showBodyContent() {
         super.showBodyContent();
@@ -42,7 +38,15 @@ public class NearByFragment extends BaseFragment {
         View view = View.inflate(getContext(), R.layout.activity_web, null);
         mLayout = (FrameLayout) view.findViewById(R.id.web_layout);
         content.addView(view);
-        content.setVisibility(View.VISIBLE);
+
+        content.setVisibility(View.INVISIBLE);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                content.setVisibility(View.VISIBLE);
+
+            }
+        }, 2000);
         // 创建 WebView
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
@@ -77,10 +81,11 @@ public class NearByFragment extends BaseFragment {
     private void hideHtmlContent(final WebView webView) {
         //编写 javaScript方法
         final String javascript = "javascript:function hideOther() {" +
+                "document.getElementsByTagName('header')[0].style.display='none';" +
 //                "document.getElementById('top').style.display='none';" +
 //                "document.getElementsByClassName('home')[0].style.display='none';" +
                 "document.getElementsByClassName('footer')[0].style.display='none';" +
-                "document.getElementsByTagName('header')[0].style.display='none';" +
+//                "document.getElementsByClassName('warpper')[0].style.display='none';" +
 //                "document.frames[0].style.display='none';"+
 //                "document.frames[1].style.display='none';"+
 //                "document.frames[2].style.display='none';"+
@@ -113,7 +118,7 @@ public class NearByFragment extends BaseFragment {
     }
 
     // 继承 WebView 里面实现的基类
-    class Html5WebChromeClient extends Html5WebView.BaseWebChromeClient {
+    static class Html5WebChromeClient extends Html5WebView.BaseWebChromeClient {
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {

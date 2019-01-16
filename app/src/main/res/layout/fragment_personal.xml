@@ -1,33 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:gravity="center_horizontal"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/avatar3"/>
-
-    <TextView
-        android:id="@+id/tv_nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:text="昵称"/>
-
-    <Button
-        android:id="@+id/bt_logout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="退出"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/btn_login_selector"/>
+        android:layout_height="match_parent"
+        android:src="@mipmap/ic_loading" />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="80dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:src="@mipmap/ic"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:id="@+id/daijiaLin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_cloud"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="免责声明"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/FullLine"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:id="@+id/settingLin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_cloud"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="意见反馈"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/FullLine"
+            android:layout_marginTop="10dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/versionLin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginRight="10dp"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_cloud"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:text="检测版本"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

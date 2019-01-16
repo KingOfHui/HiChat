@@ -1,33 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.dh.hichat">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.dh.hichat">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- Required -->
+    <permission
+        android:name="com.film.farmermanor.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
 
+    <!-- Required  一些系统要求的权限，如访问网络等-->
+    <uses-permission android:name="com.film.farmermanor.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <application
+        android:name=".ExampleApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.Html5Activity">
-        </activity>
-        <activity android:name=".ui.activity.MainActivity">
-        </activity>
+        <!--全面屏适配-->
+        <meta-data android:name="android.max_aspect" android:value="2.2" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.bxvip.app.dadazy.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <activity android:name=".ui.activity.Html5Activity"></activity>
+        <activity android:name=".ui.activity.MainActivity"></activity>
         <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.EnterNickNameActivity"/>
-        <activity android:name=".ui.activity.LoginActivity"/>
-        <activity android:name=".ui.activity.PersonalInfoActivity"/>
-        <activity android:name=".ui.activity.RegisterActivity"/>
+        <activity android:name=".ui.activity.EnterNickNameActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.PersonalInfoActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.DownLoadingActivity"></activity>
+        <service android:name="cn.jpush.android.service.PushService"
+            android:process=":multiprocess"
+            tools:node="replace" >
+
+        </service>
+        <receiver
+            android:name=".MyReceiver"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.film.farmermanor" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

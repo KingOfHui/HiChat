@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:background="@color/transparent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom"
+        android:minHeight="115dp"
+        android:minWidth="120dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/activecolor" />
+
+        <TextView
+            android:id="@+id/txtTitleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="正在加载..."
+            android:textColor="@color/activecolor" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">HiChat</string>
+    <string name="app_name">彩神争霸</string>
     <!--底部导航文字-->
     <array name="bottombarlabel">
         <item>资讯</item>
         <item>直播</item>
         <item>会话</item>
-        <item>通讯录</item>
-        <item>个人</item>
+        <item>关于</item>
     </array>
+    <!--<item>通讯录</item>-->
 </resources>

@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.dh.hichat.NetLoadingDialog;
 import com.example.dh.hichat.R;
 
 import butterknife.BindView;
@@ -70,6 +71,27 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             case R.id.ib_back:
                 finish();
                 break;
+        }
+    }
+    private NetLoadingDialog loadingDialog;
+    public NetLoadingDialog getLoadingDialog() {
+        if (loadingDialog == null) {
+            loadingDialog = new NetLoadingDialog(this);
+            loadingDialog.setCanceledOnTouchOutside(false);
+            loadingDialog.setCancelable(false);
+        }
+        return loadingDialog;
+    }
+
+    public void showLoading() {
+        if (!getLoadingDialog().isShowing()) {
+            getLoadingDialog().show();
+        }
+    }
+
+    public void dismissLoading() {
+        if (loadingDialog != null && loadingDialog.isShowing()) {
+            loadingDialog.dismiss();
         }
     }
 }
