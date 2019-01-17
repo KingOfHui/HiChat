@@ -1,4 +1,4 @@
-package com.example.dh.hichat;
+package com.example.dh.hichat.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

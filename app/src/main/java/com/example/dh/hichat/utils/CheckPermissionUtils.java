@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Apple on 2016/12/3.
  */
 
 public final class CheckPermissionUtils {

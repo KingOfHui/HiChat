@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.example.dh.hichat.ExampleUtil;
+import com.example.dh.hichat.utils.ExampleUtil;
 import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
 import com.example.dh.hichat.ui.fragment.ConversationFragment;
