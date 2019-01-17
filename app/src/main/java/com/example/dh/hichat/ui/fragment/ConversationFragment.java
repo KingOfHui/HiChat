@@ -1,8 +1,10 @@
 package com.example.dh.hichat.ui.fragment;
 
+import android.net.http.SslError;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -10,9 +12,9 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.dh.hichat.weight.Html5WebView;
 import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
+import com.example.dh.hichat.weight.Html5WebView;
 
 /**
  * Created by DH on 2017/8/10.
@@ -50,9 +52,12 @@ public class ConversationFragment extends BaseFragment {
         mLayout.addView(mWebView);
         mWebView.setWebChromeClient(new NearByFragment.Html5WebChromeClient());
 //        mWebView.loadUrl("https://m.78500.cn/site.html");
-        mWebView.loadUrl("http://m.lottery.gov.cn/mzsgyjzs/index.htm");
 
         mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView webView, String s) {
                 hideHtmlContent(webView);
@@ -71,6 +76,7 @@ public class ConversationFragment extends BaseFragment {
                 hideHtmlContent(view);
             }
         });
+        mWebView.loadUrl("http://m.lottery.gov.cn/mzsgyjzs/index.htm");
     }
 
     private void hideHtmlContent(final WebView webView) {

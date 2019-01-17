@@ -1,13 +1,19 @@
 package com.example.dh.hichat.ui.activity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -56,19 +62,60 @@ public class DownLoadingActivity extends AppCompatActivity {
         pb = (NumberProgressBar) findViewById(R.id.pb);
         String url = getIntent().getStringExtra("url");
         if (!TextUtils.isEmpty(url)) {
-            update(url);
+            mUrl = url;
+            if (isGrantExternalRW(this)) {
+                update(url);
+            }
         }
 //        initViews();
 //        initEvents();
 
     }
 
+    public static boolean isGrantExternalRW(Activity activity) {
+        if (Build.VERSION.SDK_INT >=26 && activity.checkSelfPermission(
+                Manifest.permission.REQUEST_INSTALL_PACKAGES) != PackageManager.PERMISSION_GRANTED) {
+            activity.requestPermissions(new String[]{
+                    Manifest.permission.REQUEST_INSTALL_PACKAGES
+            }, 1);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //用户同意授权
+                    update(mUrl);
+                } else {
+                    //用户拒绝授权
+                    //引导用户去打开权限
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+                    startActivityForResult(intent, 100);
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 100:
+                isGrantExternalRW(this);
+                break;
+        }
+    }
+
     public static void trustAllHosts() {
         // Create a trust manager that does not validate certificate chains
         // Android use X509 cert
-        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                return new java.security.cert.X509Certificate[] {};
+                return new java.security.cert.X509Certificate[]{};
             }
 
             public void checkClientTrusted(X509Certificate[] chain,
@@ -78,7 +125,7 @@ public class DownLoadingActivity extends AppCompatActivity {
             public void checkServerTrusted(X509Certificate[] chain,
                                            String authType) throws CertificateException {
             }
-        } };
+        }};
 
         // Install the all-trusting trust manager
         try {
@@ -133,7 +180,7 @@ public class DownLoadingActivity extends AppCompatActivity {
                             message = new Message();
                             message.what = 1;
                             handler.sendMessage(message);
-                            Log.e("dhdhdh", index+"");
+                            Log.e("dhdhdh", index + "");
                         }
 
                         inputStream.close();
@@ -152,6 +199,7 @@ public class DownLoadingActivity extends AppCompatActivity {
 
         return flag;
     }
+
     private View view;
     private Context context;
     private TextView messageTv;
@@ -195,6 +243,7 @@ public class DownLoadingActivity extends AppCompatActivity {
         finish();
         isOpenFile = true;
     }
+
     class UpdateHandler extends Handler {
 
         @Override

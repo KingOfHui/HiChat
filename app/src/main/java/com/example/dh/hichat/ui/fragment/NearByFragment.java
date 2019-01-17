@@ -1,8 +1,10 @@
 package com.example.dh.hichat.ui.fragment;
 
+import android.net.http.SslError;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -55,9 +57,14 @@ public class NearByFragment extends BaseFragment {
         mLayout.addView(mWebView);
         mWebView.setWebChromeClient(new Html5WebChromeClient());
 //        mWebView.loadUrl("https://m.78500.cn/site.html");
-        mWebView.loadUrl("http://m.zgzcw.com/news/");
+
 
         mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
+
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView webView, String s) {
                 hideHtmlContent(webView);
@@ -76,6 +83,7 @@ public class NearByFragment extends BaseFragment {
                 hideHtmlContent(view);
             }
         });
+        mWebView.loadUrl("http://m.zgzcw.com/news/");
     }
 
     private void hideHtmlContent(final WebView webView) {

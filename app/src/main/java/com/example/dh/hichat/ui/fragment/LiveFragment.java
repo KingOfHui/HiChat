@@ -1,8 +1,10 @@
 package com.example.dh.hichat.ui.fragment;
 
+import android.net.http.SslError;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -10,9 +12,9 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.dh.hichat.weight.Html5WebView;
 import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
+import com.example.dh.hichat.weight.Html5WebView;
 
 /**
  * Created by DH on 2017/8/10.
@@ -49,16 +51,38 @@ public class LiveFragment extends BaseFragment {
         mWebView.setLayoutParams(params);
         mLayout.addView(mWebView);
         mWebView.setWebChromeClient(new NearByFragment.Html5WebChromeClient());
-//        mWebView.loadUrl("https://m.78500.cn/site.html");
-        mWebView.loadUrl("https://m.78500.cn/kaijiang/");
 
+//        mWebView.loadUrl("https://m.78500.cn/site.html");
+
+//        OkHttpClient okHttpClient = new OkHttpClient();
+//        final Request request = new Request.Builder()
+//                .url("https://m.78500.cn/kaijiang/")
+//                .get()//默认就是GET请求，可以不写
+//                .build();
+//        Call call = okHttpClient.newCall(request);
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                Log.d("dhdhdh", "onFailure: "+e.getMessage());
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                String string = response.body().string();
+//                Log.d("dhdhdh", "onResponse: " + string);
+//                mWebView.loadUrl(string);
+//            }
+//        });
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView webView, String s) {
                 hideHtmlContent(webView);
                 return super.shouldInterceptRequest(webView, s);
             }
-
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
             @Override
             public void onLoadResource(WebView webView, String s) {
                 super.onLoadResource(webView, s);
@@ -71,6 +95,7 @@ public class LiveFragment extends BaseFragment {
                 hideHtmlContent(view);
             }
         });
+        mWebView.loadUrl("https://m.78500.cn/kaijiang/");
     }
 
     private void hideHtmlContent(final WebView webView) {

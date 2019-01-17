@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottomNavigationBar)
     BottomNavigationBar bottomNavigationBar;
     public static boolean isForeground = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         initFragment();
         initBottomNavigationBar();
         loading();
-//        checkUpdate();
+        checkUpdate();
     }
 
 
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private NetLoadingDialog loadingDialog;
+
     /**
      * 显示弹出框默认一个按钮
      *
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setMessage(msg);
         dialog.show();
     }
+
     public NetLoadingDialog getLoadingDialog() {
         if (loadingDialog == null) {
             loadingDialog = new NetLoadingDialog(this);
@@ -120,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         isForeground = true;
         super.onResume();
-        checkUpdate();
+//        checkUpdate();
     }
 
 
@@ -169,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
     private void setCostomMsg(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+
     Class[] fragments = new Class[]{
             NearByFragment.class,
             LiveFragment.class,
@@ -237,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
             if (fragment == null) {
                 //添加
                 ft.add(R.id.contaier, FragmentFactory.getInstance(fragments[position]), position + "");
-                if (position!=3) {
+                if (position != 3) {
                     loading();
                 }
 
@@ -275,15 +279,26 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //        return super.onKeyDown(keyCode, event);
 //    }
+    private long mPressedTime = 0;
+
     @Override
     public void onBackPressed() {
+
         BaseFragment fragment0 = (BaseFragment) getSupportFragmentManager()
                 .findFragmentByTag("" + mPosition);
         if (!fragment0.onKeyBackPressed()) {//fragment.onKeyBackPressed()返回false代表未消费事件
-            super.onBackPressed();//继续执行原有返回逻辑
+            long mNowTime = System.currentTimeMillis();//获取第一次按键时间
+            if ((mNowTime - mPressedTime) > 1500) {//比较两次按键时间差
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mPressedTime = mNowTime;
+            } else {//退出程序
+                this.finish();
+                System.exit(0);
+            }
         }
     }
-    private void checkUpdate(){
+
+    private void checkUpdate() {
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request2 = new Request.Builder()
                 .url("http://dadaappid.com/getAppConfig.php?appid=454446")
@@ -293,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
         call2.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.d("dhdhdh", "onFailure: ");
+                Log.d("dhdhdh", "onFailure: "+e.getMessage());
             }
 
             @Override
@@ -302,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     result = response.body().string();
                 }
-                    Log.e("dhdhdh", result);
+                Log.e("dhdhdh", result);
 
                 try {
                     JSONObject jsonObject = new JSONObject(result);
