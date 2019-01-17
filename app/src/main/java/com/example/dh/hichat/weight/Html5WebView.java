@@ -1,4 +1,4 @@
-package com.example.dh.hichat;
+package com.example.dh.hichat.weight;
 
 import android.content.Context;
 import android.graphics.Bitmap;

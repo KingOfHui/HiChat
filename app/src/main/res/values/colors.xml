@@ -11,5 +11,198 @@
     <color name="inactivecolor">@android:color/darker_gray</color>
     <color name="transparent">#00000000</color>
     <color name="white">#ffffff</color>
-    <color name="splitLine">#D5D5D5</color>
+    <color name="search_transparent">#b000</color>
+    <color name="transparent_white_10">#19FFFFFF</color>
+    <color name="transparent_white_20">#33FFFFFF</color>
+    <color name="transparent_white_30">#4CFFFFFF</color>
+    <color name="transparent_white_40">#66FFFFFF</color>
+    <color name="transparent_white_50">#7FFFFFFF</color>
+    <color name="transparent_white_60">#99FFFFFF</color>
+    <color name="transparent_white_70">#B2FFFFFF</color>
+    <color name="transparent_white_80">#CCFFFFFF</color>
+    <color name="transparent_white_90">#E5FFFFFF</color>
+    <color name="transparent_black_10">#19000000</color>
+    <color name="transparent_black_20">#33000000</color>
+    <color name="transparent_black_30">#4C000000</color>
+    <color name="transparent_black_40">#66000000</color>
+    <color name="transparent_black_50">#7F000000</color>
+    <color name="transparent_black_60">#99000000</color>
+    <color name="transparent_black_70">#B2000000</color>
+    <color name="transparent_black_80">#CC000000</color>
+    <color name="transparent_black_90">#E5000000</color>
+    <color name="black">#ff000000</color>
+    <!--<color name="food_menu_left">#FFe5e5e7</color>-->
+    <color name="food_menu_left">#FFe5e5e7</color>
+    <color name="food_menu_right">#FFEDEDED</color>
+    <color name="finder_mask">#60000000</color>
+    <color name="order_info_quanxuan">#F2F2F2</color>
+
+
+    <color name="dark_gray">#FF423631</color>
+    <color name="medium_gray">#FF787878</color>
+    <color name="light_gray">#FF787878</color>
+    <color name="bg_gray">#e2e4e6</color>
+    <!--<color name="splitline">#FFb2b2b1</color>-->
+    <color name="grar_line">#FFDDDDDD</color>
+    <color name="grar">#FFEEEEEE</color>
+    <color name="title_bar_bg">#FFCCCCCC</color>
+
+    <color name="scan_corner_color">#0effc2</color>
+
+    <!-- <color name="background">@color/white</color>-->
+    <!--<color name="background">#F2F2F2</color>-->
+    <color name="background_pay">#EEF0F2</color>
+    <!--<color name="background_titlebar">#EBEBEB</color>-->
+    <color name="background_titlebar">#EAEAEA</color>
+    <!--<color name="background_titlebar">#FFF8F8F8</color>-->
+    <!--<color name="background_menu_leftside">#CCF2F2F2</color>-->
+    <color name="background_menu_leftside">#FFe5e5e7</color>
+    <color name="background_tabledetail_header">#FF5E6B85</color>
+    <!--<color name="textcolor">@color/dark_gray</color>-->
+    <color name="textcolor_linked">#FFff6600</color>
+    <color name="textcolor_unpay">#FFe84538</color>
+    <color name="textcolor_payed">#FF787878</color>
+    <color name="textcolor_title">#FF4D4D4D</color>
+    <color name="textcolor_suc">#FF339900</color>
+    <color name="textcolor_green">#FF90B35A</color>
+
+    <color name="btn1_normal">#FFFF6600</color>
+    <color name="btn1_pressed">#FFF24D03</color>
+    <color name="btn1_disabled">#FFB7B3AE</color>
+
+    <color name="input_border">#FFAAAAAA</color>
+
+    <color name="tab_normal">#FFF2F2F2</color>
+    <color name="tab_pressed">#FFDCDCDC</color>
+
+    <color name="table_status_ocupy_normal">#FFED604D</color>
+    <color name="table_status_ocupy_pressed">#FFD74343</color>
+    <color name="table_status_empty_normal">#FF76B13A</color>
+    <color name="table_status_empty_pressed">#FF5D9127</color>
+    <color name="table_status_unavible_normal">#FFBDBCBB</color>
+    <color name="table_status_unavible_pressed">#FFA8A8A8</color>
+
+    <color name="table_flag_order">#FFF6F6F6</color>
+    <color name="table_flag_lock">#FF837997</color>
+    <color name="linshi_color">#0066cc</color>
+    <color name="pay_save">#FF999999</color>
+
+    <color name="bg_color">#EDEDED</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="help_button_view">#ffcccccc</color>
+    <color name="help_view">#ff404040</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="sbc_header_text">#ff808080</color>
+    <color name="sbc_header_view">#ffffffff</color>
+    <color name="sbc_list_item">#fffff0e0</color>
+    <color name="sbc_layout_view">#ffffffff</color>
+    <color name="sbc_page_number_text">#ff000000</color>
+    <color name="sbc_snippet_text">#ff4b4b4b</color>
+    <color name="share_text">#ff000000</color>
+    <color name="share_view">#ffffffff</color>
+    <color name="status_view">#50000000</color>
+    <color name="status_text">#ffffffff</color>
+    <!--<color name="transparent">#00000000</color>-->
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="header">#58567D</color>
+    <color name="grgray">#686868</color>
+    <color name="blue">#26AFFF</color>
+
+    <color name="scan_code_text_color">#B5B5B5</color>
+    <color name="qrcode_checked_color">#666666</color>
+    <color name="qrcode_unchecked_color">#CCCCCC</color>
+
+    <color name="orderinfo_operation_color">#F4F4F4</color>
+    <color name="orderinfo_allchecked_color">#EAEAEA</color>
+    <color name="orderinfo_operation_topline_color">#D5D5D5</color>
+    <color name="dividing_line">#DDDDDD</color>
+
+    <!--字体颜色-->
+    <color name="textColor">#FF423631</color>
+    <color name="textColor_cashInteger">#D6A353</color>
+    <color name="textColor_pale">#787878</color>
+    <color name="textColor_title">#FF4D4D4D</color>
+    <color name="textColor_normalBtn">#FFFFFF</color>
+    <color name="textColor_unPay">#FFe84538</color>
+    <color name="textColor_foodItem_tv">#999999</color>
+    <color name="textColor_setFood_detail">#B28850</color>
+    <color name="textColor_emphasize">#DD7E37</color>
+    <color name="textColor_tip">#FFFF6600</color>
+    <color name="textColor_unit">#999999</color>
+    <color name="textColor_price">#787878</color>
+    <color name="textColor_hint">#FF999999</color>
+    <color name="textColor_bunch">#505050</color>
+
+    <!--背景颜色-->
+    <color name="bg_title">#F8F8F8</color>
+    <color name="bg_activity">#FFFFFF</color>
+    <color name="bg_btn_normal">#FFFF6600</color>
+    <color name="bg_btn_unEnable">#CCCCCC</color>
+    <color name="bg_btn_pressed">#FFF24D03</color>
+    <color name="bg_darkbtn_normal">#eb5642</color>
+    <color name="bg_darkbtn_pressed">#dd503d</color>
+    <color name="bg_unit_few_ic">#FF0000</color>
+    <color name="bg_unit_soldout_ic">#999999</color>
+    <color name="bg_soldout_guqing">#ED604D</color>
+    <color name="bg_soldout_liangshao">#F6A23F</color>
+    <color name="cover_trans">#88000000</color>
+
+
+    <!--默认 #eb5642          click #dd503d-->
+    <color name="splitLine_1">#999999</color>
+    <color name="bg_cartLin">#FF514e50</color>
+    <!--现金支付确认按钮的字体颜色-->
+    <color name="textColor_cashPay_true">#FF5D9127</color>
+
+    <color name="color_masking">#40000000</color>
+
+    <color name="diving_line_dot">#d4d4d4</color>
+
+
+    <color name="theme_text_title">#FF333333</color>
+    <!--Common Text Color-->
+    <color name="theme_accent">#FFFF6600</color>
+    <color name="theme_text_content">#FF555555</color>
+    <color name="theme_text_accent">@color/theme_accent</color>
+    <color name="theme_text_hint">#FFCCCCCC</color>
+    <color name="theme_text_disabled">#FFCCCCCC</color>
+    <color name="theme_text_light">#FF999999</color>  <!--规格文字，取消-->
+    <color name="theme_split_line">#FFCDCDCD</color>
+
+    <!--Common Button-->
+    <color name="theme_bg_accent_button">#FF6600</color>
+    <color name="theme_bg_accent_button_pressed">#D95700</color>
+    <color name="theme_bg_accent_button_disabled">#FFA366</color>
+    <color name="theme_text_accent_button">#FFFFFF</color>
+    <color name="theme_text_accent_button_pressed">#D9D9D9</color>
+    <color name="theme_text_accent_button_disabled">#FFFFFF</color>
+
+    <color name="strong">#FF5B26</color>
+
+    <color name="red_226">#E25E5E</color>
+    <color name="error_color">#FF4081</color>
+
+    <color name="red">#FF5C26</color>
+    <color name="orange">#FEA466</color>
+    <color name="green">#66BB00</color>
+    <color name="font_text">#666</color>
+    <color name="color_999">#999</color>
+    <color name="color_eee">#eee</color>
+    <color name="font_info">#999</color>
+    <color name="font_tips">#CCC</color>
+    <color name="divider">#EEE</color>
+    <color name="border_block">#EAEAEA</color>
+    <color name="textcolor">#63B8FF</color>
+    <color name="color_ccc">#CCC</color>
+
+    <color name="color_backgroud">#D33A31</color>
+    <color name="color_gray_voucher">#909090</color>
 </resources>

@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
-import com.example.dh.hichat.Html5WebView;
+import com.example.dh.hichat.weight.Html5WebView;
 import com.example.dh.hichat.R;
 
 public class Html5Activity extends AppCompatActivity {

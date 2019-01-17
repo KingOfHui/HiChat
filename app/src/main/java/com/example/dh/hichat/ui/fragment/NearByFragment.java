@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.dh.hichat.Html5WebView;
+import com.example.dh.hichat.weight.Html5WebView;
 import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
 

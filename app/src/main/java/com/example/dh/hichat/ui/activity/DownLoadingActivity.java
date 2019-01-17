@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +27,15 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class DownLoadingActivity extends AppCompatActivity {
 
@@ -53,6 +62,35 @@ public class DownLoadingActivity extends AppCompatActivity {
 //        initEvents();
 
     }
+
+    public static void trustAllHosts() {
+        // Create a trust manager that does not validate certificate chains
+        // Android use X509 cert
+        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return new java.security.cert.X509Certificate[] {};
+            }
+
+            public void checkClientTrusted(X509Certificate[] chain,
+                                           String authType) throws CertificateException {
+            }
+
+            public void checkServerTrusted(X509Certificate[] chain,
+                                           String authType) throws CertificateException {
+            }
+        } };
+
+        // Install the all-trusting trust manager
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            HttpsURLConnection
+                    .setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public boolean update(final String urlStr) {
         handler = new UpdateHandler();
         final File file = new File(Environment.getExternalStorageDirectory() + "/" + "caishen.apk");
@@ -60,7 +98,25 @@ public class DownLoadingActivity extends AppCompatActivity {
             public void run() {
                 try {
                     URL url = new URL(urlStr);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    HttpURLConnection connection;
+                    //关键代码
+                    //ignore https certificate validation |忽略 https 证书验证
+                    if (url.getProtocol().toUpperCase().equals("HTTPS")) {
+                        trustAllHosts();
+                        HttpsURLConnection https = (HttpsURLConnection) url
+                                .openConnection();
+                        https.setHostnameVerifier(new HostnameVerifier() {
+                            @Override
+                            public boolean verify(String hostname, SSLSession session) {
+                                return true;
+                            }
+                        });
+                        connection = https;
+                    } else {
+                        connection = (HttpURLConnection) url.openConnection();
+                    }
+//                    connection.setSSLSocketFactory(context.getSocketFactory());
+
                     size = connection.getContentLength();
                     InputStream inputStream = connection.getInputStream();
                     FileOutputStream outputStream = new FileOutputStream(file);
@@ -77,6 +133,7 @@ public class DownLoadingActivity extends AppCompatActivity {
                             message = new Message();
                             message.what = 1;
                             handler.sendMessage(message);
+                            Log.e("dhdhdh", index+"");
                         }
 
                         inputStream.close();

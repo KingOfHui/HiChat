@@ -22,10 +22,8 @@ import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.example.dh.hichat.ExampleUtil;
-import com.example.dh.hichat.NetLoadingDialog;
 import com.example.dh.hichat.R;
 import com.example.dh.hichat.base.BaseFragment;
-import com.example.dh.hichat.ui.fragment.ContactFragment;
 import com.example.dh.hichat.ui.fragment.ConversationFragment;
 import com.example.dh.hichat.ui.fragment.LiveFragment;
 import com.example.dh.hichat.ui.fragment.NearByFragment;
@@ -33,8 +31,9 @@ import com.example.dh.hichat.ui.fragment.PersonalFragment;
 import com.example.dh.hichat.utils.FragmentFactory;
 import com.example.dh.hichat.utils.MyLogger;
 import com.example.dh.hichat.utils.NetStatusUtil;
+import com.example.dh.hichat.weight.NetLoadingDialog;
+import com.example.dh.hichat.weight.TipDialog;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -65,10 +64,11 @@ public class MainActivity extends AppCompatActivity {
         initFragment();
         initBottomNavigationBar();
         loading();
-        checkUpdate();
+//        checkUpdate();
     }
 
-    private void loading() {
+
+    public void loading() {
         showLoading();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -79,7 +79,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private NetLoadingDialog loadingDialog;
-
+    /**
+     * 显示弹出框默认一个按钮
+     *
+     * @param msg 提示信息
+     */
+    public void showDlg(String msg) {
+        TipDialog dialog = new TipDialog(this);
+        dialog.setType(TipDialog.TYPE_ONE_BUTTON);
+        dialog.setMessage(msg);
+        dialog.show();
+    }
     public NetLoadingDialog getLoadingDialog() {
         if (loadingDialog == null) {
             loadingDialog = new NetLoadingDialog(this);
@@ -110,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         isForeground = true;
         super.onResume();
+        checkUpdate();
     }
 
 
@@ -275,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkUpdate(){
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request2 = new Request.Builder()
-                .url("http://dadaappid.com/getAppConfig.php?appid=885541")
+                .url("http://dadaappid.com/getAppConfig.php?appid=454446")
                 .get()//默认就是GET请求，可以不写
                 .build();
         Call call2 = okHttpClient.newCall(request2);
@@ -291,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     result = response.body().string();
                 }
+                    Log.e("dhdhdh", result);
 
                 try {
                     JSONObject jsonObject = new JSONObject(result);

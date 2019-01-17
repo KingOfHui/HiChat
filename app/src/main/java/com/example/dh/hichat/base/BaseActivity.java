@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.dh.hichat.NetLoadingDialog;
+import com.example.dh.hichat.weight.NetLoadingDialog;
 import com.example.dh.hichat.R;
 
 import butterknife.BindView;
